@@ -1,0 +1,14 @@
+{
+  "$schema": "https://unpkg.com/@changesets/config@3.0.0/schema.json",
+  "changelog": [
+    "@svitejs/changesets-changelog-github-compact",
+    {"repo": "sitek94/tauri-auto-update-demo"}
+  ],
+  "commit": false,
+  "access": "restricted",
+  "baseBranch": "main",
+  "privatePackages": {
+    "tag": true,
+    "version": true
+  }
+}
