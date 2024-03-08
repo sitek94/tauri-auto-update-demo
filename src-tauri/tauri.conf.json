@@ -1,42 +1,56 @@
 {
   "build": {
-    "beforeDevCommand": "bun run dev",
-    "beforeBuildCommand": "bun run build",
+    "beforeDevCommand": "bun frontend:dev",
+    "beforeBuildCommand": "bun frontend:build",
     "devPath": "http://localhost:1420",
-    "distDir": "../dist"
+    "distDir": "../dist",
+    "withGlobalTauri": true
   },
   "package": {
     "productName": "tauri-auto-update-demo",
-    "version": "0.0.0"
+    "version": "../package.json"
   },
   "tauri": {
     "allowlist": {
       "all": false,
+      "process": {
+        "relaunch": true
+      },
       "shell": {
         "all": false,
         "open": true
       }
     },
-    "windows": [
-      {
-        "title": "tauri-auto-update-demo",
-        "width": 800,
-        "height": 600
-      }
-    ],
-    "security": {
-      "csp": null
-    },
     "bundle": {
       "active": true,
       "targets": "all",
-      "identifier": "com.tauri.dev",
+      "identifier": "com.tauri.tauri-auto-update-demo",
       "icon": [
         "icons/32x32.png",
         "icons/128x128.png",
         "icons/128x128@2x.png",
         "icons/icon.icns",
         "icons/icon.ico"
+      ]
+    },
+    "security": {
+      "csp": null
+    },
+    "windows": [
+      {
+        "fullscreen": false,
+        "resizable": true,
+        "title": "demo",
+        "width": 800,
+        "height": 600
+      }
+    ],
+    "updater": {
+      "active": true,
+      "dialog": true,
+      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IDlBQjIxNkE1NjJGMzM2MjcKUldRbk52TmlwUmF5bWxYYjFiU0VaUkgyR1oybkZRZjBnZWUzK3UvelBBc1gxeTRNcHBYZmkzNXcK",
+      "endpoints": [
+        "https://sitek94.github.io/tauri-auto-update-demo/install.json"
       ]
     }
   }
