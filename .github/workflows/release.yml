@@ -16,6 +16,55 @@ permissions:
   pull-requests: write
 
 jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - build: macos
+            os: macos-latest
+            arch: aarch64
+            target: aarch64-apple-darwin
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup bun
+        uses: oven-sh/setup-bun@v1
+
+      - name: Install dependencies
+        run: bun install
+
+      - name: Setup Rust
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: ${{ matrix.target }}
+      - uses: Swatinem/rust-cache@v2
+        with:
+          key: ${{ matrix.target }}
+
+      - name: Build Frontend
+        run: bun frontend:build
+
+      - name: Install Rust target
+        run: rustup target add ${{ matrix.target }}
+
+      - name: Build Tauri
+        run: bun tauri:build --target ${{ matrix.target }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TAURI_PRIVATE_KEY: ${{ secrets.TAURI_PRIVATE_KEY }}
+
+      - uses: actions/upload-artifact@v4
+        if: matrix.os == 'macos-latest'
+        with:
+          name: artifacts-${{ matrix.arch }}
+          path: |
+            ./src-tauri/target/${{ matrix.target }}/release/bundle/dmg/**.dmg
+            ./src-tauri/target/${{ matrix.target }}/release/bundle/macos/**.app.*
+
   release:
     name: Release
     runs-on: ubuntu-latest
@@ -41,6 +90,18 @@ jobs:
         # 🔗 See: https://github.com/changesets/action/issues/303#issuecomment-1888167265
         run: |
           echo "NEW_VERSION=$(bun changeset status --output=release.json && jq -r '.releases[0].newVersion' release.json && rm release.json)" >> $GITHUB_OUTPUT
+
+      - name: Download artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: artifacts-aarch64
+          path: artifacts/aarch64
+
+      - name: Rename artifacts
+        run: |
+          mv "artifacts/aarch64/dmg/demo_${{ steps.set_version.outputs.NEW_VERSION }}_aarch64.dmg" "artifacts/demo_${{ steps.set_version.outputs.NEW_VERSION }}_macos_aarch64.dmg"
+          mv "artifacts/aarch64/macos/demo.app.tar.gz" "artifacts/demo_${{ steps.set_version.outputs.NEW_VERSION }}_macos_aarch64.app.tar.gz"
+          mv "artifacts/aarch64/macos/demo.app.tar.gz.sig" "artifacts/demo_${{ steps.set_version.outputs.NEW_VERSION }}_macos_aarch64.app.tar.gz.sig"
 
       - name: Create Release Pull Request
         uses: changesets/action@v1
