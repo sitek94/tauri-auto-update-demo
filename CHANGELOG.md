@@ -1,5 +1,11 @@
 # tauri-auto-update-demo
 
+## 0.1.4
+
+### Patch Changes
+
+- fix missing version ([`dceff77adc4b18c0f79cd927450de6617b1e9573`](https://github.com/sitek94/tauri-auto-update-demo/commit/dceff77adc4b18c0f79cd927450de6617b1e9573))
+
 ## 0.1.3
 
 ### Patch Changes
