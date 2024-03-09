@@ -8,8 +8,8 @@
     "./artifacts/**/*"
   ],
   "scripts": {
-    "frontend:build": "bun ./scripts/build.js",
-    "_frontend:build": "vite build",
+    "_frontend:build": "bun ./scripts/build.js",
+    "frontend:build": "vite build",
     "frontend:dev": "vite",
     "preview": "vite preview",
     "check": "svelte-check --tsconfig ./tsconfig.json",
