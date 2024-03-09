@@ -96,6 +96,7 @@ jobs:
             echo "HAS_CHANGESETS=$(jq -r '.changesets | length > 0' release.json)" >> $GITHUB_OUTPUT
             rm release.json
           else
+            echo "NEW_VERSION=$(jq -r '.version' package.json)" >> $GITHUB_OUTPUT
             echo "HAS_CHANGESETS=false" >> $GITHUB_OUTPUT
           fi
 
