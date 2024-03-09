@@ -130,9 +130,8 @@ jobs:
 
       - name: Upload assets
         if: steps.changesets.outputs.published == 'true'
-        # UPload reademe to test uploading assets
-        run:
-          gh release upload v${{ steps.set_version.outputs.new_version}}
-          ./README.md
+        run: |
+          VERSION=$(jq -r '.version' package.json)
+          gh release upload v$VERSION ./README.md
         env:
           GH_TOKEN: ${{ secrets.GH_BOT_PAT }}
