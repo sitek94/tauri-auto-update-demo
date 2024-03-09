@@ -1,5 +1,11 @@
 # tauri-auto-update-demo
 
+## 0.1.12
+
+### Patch Changes
+
+- test release with actual tauri build ([`17bf339b9b0197dcca5ce513fc0dc2430b551bc7`](https://github.com/sitek94/tauri-auto-update-demo/commit/17bf339b9b0197dcca5ce513fc0dc2430b551bc7))
+
 ## 0.1.11
 
 ### Patch Changes
