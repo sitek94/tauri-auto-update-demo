@@ -90,15 +90,20 @@ jobs:
         # we can use `changeset status` command to get the new version and then use it in the next steps.
         # 🔗 See: https://github.com/changesets/action/issues/303#issuecomment-1888167265
         run: |
-          echo "NEW_VERSION=$(bun changeset status --output=release.json && jq -r '.releases[0].newVersion' release.json && rm release.json)" >> $GITHUB_OUTPUT
+          bun changeset status --output=release.json
+          echo "NEW_VERSION=$(jq -r '.releases[0].newVersion' release.json)" >> $GITHUB_OUTPUT
+          echo "HAS_CHANGESETS=$(jq -r '.changesets | length > 0' release.json)" >> $GITHUB_OUTPUT
+          rm release.json
 
       - name: Download artifacts
+        if: steps.set_version.outputs.HAS_CHANGESETS == 'false'
         uses: actions/download-artifact@v4
         with:
           name: artifacts-aarch64
           path: artifacts/aarch64
 
       - name: Rename artifacts
+        if: steps.set_version.outputs.HAS_CHANGESETS == 'false'
         run: |
           mv "artifacts/aarch64/dmg/tauri-auto-update-demo_${{ steps.set_version.outputs.NEW_VERSION }}_aarch64.dmg" "artifacts/tauri-auto-update-demo_${{ steps.set_version.outputs.NEW_VERSION }}_macos_aarch64.dmg"
           mv "artifacts/aarch64/macos/tauri-auto-update-demo.app.tar.gz" "artifacts/tauri-auto-update-demo_${{ steps.set_version.outputs.NEW_VERSION }}_macos_aarch64.app.tar.gz"
