@@ -1,0 +1,39 @@
+name: Test
+
+on:
+  workflow_dispatch:
+
+concurrency: ${{ github.workflow }}-${{ github.ref }}
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup bun
+        uses: oven-sh/setup-bun@v1
+
+      - name: Install dependencies
+        run: bun install
+
+      - name: Set new version
+        id: set_version
+        # Currently, there is no way to customize PR title and commit message in the action. As a workaround,
+        # we can use `changeset status` command to get the new version and then use it in the next steps.
+        # 🔗 See: https://github.com/changesets/action/issues/303#issuecomment-1888167265
+        run: |
+          bun changeset status --output=release.json || true
+          if [ -f release.json ]; then
+            echo "NEW_VERSION=$(jq -r '.releases[0].newVersion' release.json)" >> $GITHUB_ENV
+            echo "HAS_CHANGESETS=$(jq -r '.changesets | length > 0' release.json)" >> $GITHUB_ENV
+            rm release.json
+            echo "New version: $NEW_VERSION"
+            echo "Has changesets: $HAS_CHANGESETS"
+          fi
