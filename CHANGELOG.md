@@ -1,5 +1,11 @@
 # tauri-auto-update-demo
 
+## 0.1.13
+
+### Patch Changes
+
+- try fixing broken signature ([`1e45ec639f8e89bc15cf82123b6e43e354e9fc9b`](https://github.com/sitek94/tauri-auto-update-demo/commit/1e45ec639f8e89bc15cf82123b6e43e354e9fc9b))
+
 ## 0.1.12
 
 ### Patch Changes
