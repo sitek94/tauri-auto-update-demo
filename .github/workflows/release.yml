@@ -110,8 +110,6 @@ jobs:
       - name: Rename artifacts
         if: steps.set_version.outputs.HAS_CHANGESETS == 'false'
         run: |
-          ls -l artifacts/aarch64
-          ls -l artfacts
           mv "artifacts/aarch64/dmg/tauri-auto-update-demo_${{ steps.set_version.outputs.NEW_VERSION }}_aarch64.dmg" "artifacts/tauri-auto-update-demo_${{ steps.set_version.outputs.NEW_VERSION }}_macos_aarch64.dmg"
           mv "artifacts/aarch64/macos/tauri-auto-update-demo.app.tar.gz" "artifacts/tauri-auto-update-demo_${{ steps.set_version.outputs.NEW_VERSION }}_macos_aarch64.app.tar.gz"
           mv "artifacts/aarch64/macos/tauri-auto-update-demo.app.tar.gz.sig" "artifacts/tauri-auto-update-demo_${{ steps.set_version.outputs.NEW_VERSION }}_macos_aarch64.app.tar.gz.sig"
