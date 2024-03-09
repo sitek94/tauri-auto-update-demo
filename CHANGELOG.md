@@ -1,5 +1,11 @@
 # tauri-auto-update-demo
 
+## 0.1.15
+
+### Patch Changes
+
+- enable tauri updater ([`5b4079957e93271f9859422c0364ca099b1566c2`](https://github.com/sitek94/tauri-auto-update-demo/commit/5b4079957e93271f9859422c0364ca099b1566c2))
+
 ## 0.1.14
 
 ### Patch Changes
