@@ -91,9 +91,13 @@ jobs:
         # 🔗 See: https://github.com/changesets/action/issues/303#issuecomment-1888167265
         run: |
           bun changeset status --output=release.json || true
-          echo "NEW_VERSION=$(jq -r '.releases[0].newVersion' release.json)" >> $GITHUB_OUTPUT
-          echo "HAS_CHANGESETS=$(jq -r '.changesets | length > 0' release.json)" >> $GITHUB_OUTPUT
-          rm release.json
+          if [ -f release.json ]; then
+            echo "NEW_VERSION=$(jq -r '.releases[0].newVersion' release.json)" >> $GITHUB_ENV
+            echo "HAS_CHANGESETS=$(jq -r '.changesets | length > 0' release.json)" >> $GITHUB_ENV
+            rm release.json
+            echo "New version: $NEW_VERSION"
+            echo "Has changesets: $HAS_CHANGESETS"
+          fi
 
       - name: Download artifacts
         if: steps.set_version.outputs.HAS_CHANGESETS == 'false'
