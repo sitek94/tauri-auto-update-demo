@@ -45,8 +45,8 @@ jobs:
       #   with:
       #     key: ${{ matrix.target }}
 
-      # - name: Build Frontend
-      #   run: bun frontend:build
+      - name: Build Frontend
+        run: bun frontend:build
 
       # - name: Install Rust target
       #   run: rustup target add ${{ matrix.target }}
