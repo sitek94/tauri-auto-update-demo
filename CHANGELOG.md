@@ -1,5 +1,59 @@
 # tauri-auto-update-demo
 
+## 0.1.11
+
+### Patch Changes
+
+- fix interpolation in gh release scripts ([`35fbcb5a9c7baa9527978e05c2e3a387607d5626`](https://github.com/sitek94/tauri-auto-update-demo/commit/35fbcb5a9c7baa9527978e05c2e3a387607d5626))
+
+## 0.1.10
+
+### Patch Changes
+
+- fix variable interpolation ([`324f69e20dbbe3a4c47a7243e1c8e78e195737ef`](https://github.com/sitek94/tauri-auto-update-demo/commit/324f69e20dbbe3a4c47a7243e1c8e78e195737ef))
+
+## 0.1.9
+
+### Patch Changes
+
+- test uploading release assets with fake app files ([`a9bbf72ea1090c3bc1d4d395f1b385d547e898d2`](https://github.com/sitek94/tauri-auto-update-demo/commit/a9bbf72ea1090c3bc1d4d395f1b385d547e898d2))
+
+## 0.1.8
+
+### Patch Changes
+
+- get version from package.json ([`61c586d77f0556eb9830f5342f35c0bc53370450`](https://github.com/sitek94/tauri-auto-update-demo/commit/61c586d77f0556eb9830f5342f35c0bc53370450))
+
+## 0.1.7
+
+### Patch Changes
+
+- add missing gh_token ([`9b8a4a51da9b74d3d9b857226c5abfc56141a2f6`](https://github.com/sitek94/tauri-auto-update-demo/commit/9b8a4a51da9b74d3d9b857226c5abfc56141a2f6))
+
+## 0.1.6
+
+### Patch Changes
+
+- new release ([`bc6b38dbffd9fd4b3dd46f0329c995e5a6576d42`](https://github.com/sitek94/tauri-auto-update-demo/commit/bc6b38dbffd9fd4b3dd46f0329c995e5a6576d42))
+
+## 0.1.5
+
+### Patch Changes
+
+- add missing sig file ([`6177781f12537a9e6f62c2726a34405f3d0c633d`](https://github.com/sitek94/tauri-auto-update-demo/commit/6177781f12537a9e6f62c2726a34405f3d0c633d))
+
+## 0.1.4
+
+### Patch Changes
+
+- fix missing version ([`dceff77adc4b18c0f79cd927450de6617b1e9573`](https://github.com/sitek94/tauri-auto-update-demo/commit/dceff77adc4b18c0f79cd927450de6617b1e9573))
+
+## 0.1.3
+
+### Patch Changes
+
+- fix build ([`7ac4741f48c568ac6995b71c1017058783d7ad1b`](https://github.com/sitek94/tauri-auto-update-demo/commit/7ac4741f48c568ac6995b71c1017058783d7ad1b))
+
 ## 0.1.2
 
 ### Patch Changes
