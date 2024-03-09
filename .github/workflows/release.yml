@@ -57,13 +57,13 @@ jobs:
       #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       #     TAURI_PRIVATE_KEY: ${{ secrets.TAURI_PRIVATE_KEY }}
 
-      # - uses: actions/upload-artifact@v4
-      #   if: matrix.os == 'macos-latest'
-      #   with:
-      #     name: artifacts-${{ matrix.arch }}
-      #     path: |
-      #       ./src-tauri/target/${{ matrix.target }}/release/bundle/dmg/**.dmg
-      #       ./src-tauri/target/${{ matrix.target }}/release/bundle/macos/**.app.*
+      - uses: actions/upload-artifact@v4
+        if: matrix.os == 'macos-latest'
+        with:
+          name: artifacts-${{ matrix.arch }}
+          path: |
+            ./src-tauri/target/${{ matrix.target }}/release/bundle/dmg/**.dmg
+            ./src-tauri/target/${{ matrix.target }}/release/bundle/macos/**.app.*
 
   release:
     name: Release
@@ -89,32 +89,8 @@ jobs:
         # Currently, there is no way to customize PR title and commit message in the action. As a workaround,
         # we can use `changeset status` command to get the new version and then use it in the next steps.
         # 🔗 See: https://github.com/changesets/action/issues/303#issuecomment-1888167265
-        # run: |
-        #   bun changeset status --output=release.json || true
-        #   if [ -f release.json ]; then
-        #     echo "NEW_VERSION=$(jq -r '.releases[0].newVersion' release.json)" >> $GITHUB_OUTPUT
-        #     echo "HAS_CHANGESETS=$(jq -r '.changesets | length > 0' release.json)" >> $GITHUB_OUTPUT
-        #     rm release.json
-        #   else
-        #     echo "NEW_VERSION=$(jq -r '.version' package.json)" >> $GITHUB_OUTPUT
-        #     echo "HAS_CHANGESETS=false" >> $GITHUB_OUTPUT
-        #   fi
         run: |
           echo "new_version=$(bun changeset status --output=release.json && jq -r '.releases[0].newVersion' release.json && rm release.json)" >> $GITHUB_OUTPUT
-
-      # - name: Download artifacts
-      #   if: steps.set_version.outputs.HAS_CHANGESETS == 'false'
-      #   uses: actions/download-artifact@v4
-      #   with:
-      #     name: artifacts-aarch64
-      #     path: artifacts/aarch64
-
-      # - name: Rename artifacts
-      #   if: steps.set_version.outputs.HAS_CHANGESETS == 'false'
-      #   run: |
-      #     mv "artifacts/aarch64/dmg/tauri-auto-update-demo_${{ steps.set_version.outputs.NEW_VERSION }}_aarch64.dmg" "artifacts/tauri-auto-update-demo_${{ steps.set_version.outputs.NEW_VERSION }}_macos_aarch64.dmg"
-      #     mv "artifacts/aarch64/macos/tauri-auto-update-demo.app.tar.gz" "artifacts/tauri-auto-update-demo_${{ steps.set_version.outputs.NEW_VERSION }}_macos_aarch64.app.tar.gz"
-      #     mv "artifacts/aarch64/macos/tauri-auto-update-demo.app.tar.gz.sig" "artifacts/tauri-auto-update-demo_${{ steps.set_version.outputs.NEW_VERSION }}_macos_aarch64.app.tar.gz.sig"
 
       - name: Create Release Pull Request
         id: changesets
@@ -128,10 +104,24 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GH_BOT_PAT }}
 
-      - name: Upload assets
+      - name: Download artifacts
         if: steps.changesets.outputs.published == 'true'
-        run: |
-          VERSION=$(jq -r '.version' package.json)
-          gh release upload v$VERSION ./README.md
+        uses: actions/download-artifact@v4
+        with:
+          name: artifacts-aarch64
+          path: artifacts/aarch64
+
+      - name: Upload artifacts
+        if: steps.changesets.outputs.published == 'true'
         env:
           GH_TOKEN: ${{ secrets.GH_BOT_PAT }}
+        run: |
+          VERSION=$(jq -r '.version' package.json)
+
+          mv "artifacts/aarch64/dmg/tauri-auto-update-demo_$VERSION_aarch64.dmg" "artifacts/tauri-auto-update-demo_$VERSION_macos_aarch64.dmg"
+          mv "artifacts/aarch64/macos/tauri-auto-update-demo.app.tar.gz" "artifacts/tauri-auto-update-demo_$VERSION_macos_aarch64.app.tar.gz"
+          mv "artifacts/aarch64/macos/tauri-auto-update-demo.app.tar.gz.sig" "artifacts/tauri-auto-update-demo_$VERSION_macos_aarch64.app.tar.gz.sig"
+
+          gh release upload v$VERSION "artifacts/tauri-auto-update-demo_$VERSION_macos_aarch64.dmg"
+          gh release upload v$VERSION "artifacts/tauri-auto-update-demo_$VERSION_macos_aarch64.app.tar.gz"
+          gh release upload v$VERSION "artifacts/tauri-auto-update-demo_$VERSION_macos_aarch64.app.tar.gz.sig"
