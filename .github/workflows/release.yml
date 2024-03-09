@@ -37,25 +37,25 @@ jobs:
       - name: Install dependencies
         run: bun install
 
-      - name: Setup Rust
-        uses: dtolnay/rust-toolchain@stable
-        with:
-          targets: ${{ matrix.target }}
-      - uses: Swatinem/rust-cache@v2
-        with:
-          key: ${{ matrix.target }}
+      # - name: Setup Rust
+      #   uses: dtolnay/rust-toolchain@stable
+      #   with:
+      #     targets: ${{ matrix.target }}
+      # - uses: Swatinem/rust-cache@v2
+      #   with:
+      #     key: ${{ matrix.target }}
 
-      - name: Build Frontend
-        run: bun frontend:build
+      # - name: Build Frontend
+      #   run: bun frontend:build
 
-      - name: Install Rust target
-        run: rustup target add ${{ matrix.target }}
+      # - name: Install Rust target
+      #   run: rustup target add ${{ matrix.target }}
 
-      - name: Build Tauri
-        run: bun tauri:build --target ${{ matrix.target }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          TAURI_PRIVATE_KEY: ${{ secrets.TAURI_PRIVATE_KEY }}
+      # - name: Build Tauri
+      #   run: bun tauri:build --target ${{ matrix.target }}
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #     TAURI_PRIVATE_KEY: ${{ secrets.TAURI_PRIVATE_KEY }}
 
       - uses: actions/upload-artifact@v4
         if: matrix.os == 'macos-latest'
@@ -92,11 +92,11 @@ jobs:
         run: |
           bun changeset status --output=release.json || true
           if [ -f release.json ]; then
-            echo "NEW_VERSION=$(jq -r '.releases[0].newVersion' release.json)" >> $GITHUB_ENV
-            echo "HAS_CHANGESETS=$(jq -r '.changesets | length > 0' release.json)" >> $GITHUB_ENV
+            echo "NEW_VERSION=$(jq -r '.releases[0].newVersion' release.json)" >> $GITHUB_OUTPUT
+            echo "HAS_CHANGESETS=$(jq -r '.changesets | length > 0' release.json)" >> $GITHUB_OUTPUT
             rm release.json
-            echo "New version: $NEW_VERSION"
-            echo "Has changesets: $HAS_CHANGESETS"
+          else
+            echo "HAS_CHANGESETS=false" >> $GITHUB_OUTPUT
           fi
 
       - name: Download artifacts
