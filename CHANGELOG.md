@@ -1,5 +1,11 @@
 # tauri-auto-update-demo
 
+## 0.1.11
+
+### Patch Changes
+
+- fix interpolation in gh release scripts ([`35fbcb5a9c7baa9527978e05c2e3a387607d5626`](https://github.com/sitek94/tauri-auto-update-demo/commit/35fbcb5a9c7baa9527978e05c2e3a387607d5626))
+
 ## 0.1.10
 
 ### Patch Changes
