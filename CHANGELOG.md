@@ -1,5 +1,11 @@
 # tauri-auto-update-demo
 
+## 0.1.8
+
+### Patch Changes
+
+- get version from package.json ([`61c586d77f0556eb9830f5342f35c0bc53370450`](https://github.com/sitek94/tauri-auto-update-demo/commit/61c586d77f0556eb9830f5342f35c0bc53370450))
+
 ## 0.1.7
 
 ### Patch Changes
