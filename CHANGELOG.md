@@ -1,5 +1,11 @@
 # tauri-auto-update-demo
 
+## 0.0.3
+
+### Patch Changes
+
+- fake release ([`04089cfe65ba9ac6e9a3da35d87e63a502a84d6a`](https://github.com/sitek94/tauri-auto-update-demo/commit/04089cfe65ba9ac6e9a3da35d87e63a502a84d6a))
+
 ## 0.0.2
 
 ### Patch Changes
