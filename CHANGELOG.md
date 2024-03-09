@@ -1,5 +1,11 @@
 # tauri-auto-update-demo
 
+## 0.1.10
+
+### Patch Changes
+
+- fix variable interpolation ([`324f69e20dbbe3a4c47a7243e1c8e78e195737ef`](https://github.com/sitek94/tauri-auto-update-demo/commit/324f69e20dbbe3a4c47a7243e1c8e78e195737ef))
+
 ## 0.1.9
 
 ### Patch Changes
