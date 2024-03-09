@@ -1,5 +1,11 @@
 # tauri-auto-update-demo
 
+## 0.1.2
+
+### Patch Changes
+
+- fix target ([`cd162d268fcc10fd571e65b332908b09b57bc345`](https://github.com/sitek94/tauri-auto-update-demo/commit/cd162d268fcc10fd571e65b332908b09b57bc345))
+
 ## 0.1.1
 
 ### Patch Changes
