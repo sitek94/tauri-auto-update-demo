@@ -90,7 +90,7 @@ jobs:
         # we can use `changeset status` command to get the new version and then use it in the next steps.
         # 🔗 See: https://github.com/changesets/action/issues/303#issuecomment-1888167265
         run: |
-          bun changeset status --output=release.json
+          bun changeset status --output=release.json || true
           echo "NEW_VERSION=$(jq -r '.releases[0].newVersion' release.json)" >> $GITHUB_OUTPUT
           echo "HAS_CHANGESETS=$(jq -r '.changesets | length > 0' release.json)" >> $GITHUB_OUTPUT
           rm release.json
