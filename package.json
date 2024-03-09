@@ -8,7 +8,8 @@
     "./artifacts/**/*"
   ],
   "scripts": {
-    "frontend:build": "vite build",
+    "frontend:build": "bun ./scripts/build.js",
+    "_frontend:build": "vite build",
     "frontend:dev": "vite",
     "preview": "vite preview",
     "check": "svelte-check --tsconfig ./tsconfig.json",
@@ -28,6 +29,7 @@
     "@svitejs/changesets-changelog-github-compact": "^1.1.0",
     "@tauri-apps/cli": "^1",
     "@tsconfig/svelte": "^5.0.2",
+    "@types/bun": "^1.0.8",
     "svelte": "^4.2.8",
     "svelte-check": "^3.4.6",
     "tslib": "^2.6.0",
