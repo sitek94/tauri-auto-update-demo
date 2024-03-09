@@ -1,5 +1,11 @@
 # tauri-auto-update-demo
 
+## 0.1.7
+
+### Patch Changes
+
+- add missing gh_token ([`9b8a4a51da9b74d3d9b857226c5abfc56141a2f6`](https://github.com/sitek94/tauri-auto-update-demo/commit/9b8a4a51da9b74d3d9b857226c5abfc56141a2f6))
+
 ## 0.1.6
 
 ### Patch Changes
