@@ -121,6 +121,6 @@ jobs:
           mv "artifacts/aarch64/macos/tauri-auto-update-demo.app.tar.gz" "artifacts/tauri-auto-update-demo_${VERSION}_macos_aarch64.app.tar.gz"
           mv "artifacts/aarch64/macos/tauri-auto-update-demo.app.tar.gz.sig" "artifacts/tauri-auto-update-demo_${VERSION}_macos_aarch64.app.tar.gz.sig"
 
-          gh release upload v$VERSION "artifacts/tauri-auto-update-demo_$VERSION_macos_aarch64.dmg"
-          gh release upload v$VERSION "artifacts/tauri-auto-update-demo_$VERSION_macos_aarch64.app.tar.gz"
-          gh release upload v$VERSION "artifacts/tauri-auto-update-demo_$VERSION_macos_aarch64.app.tar.gz.sig"
+          gh release upload v$VERSION "artifacts/tauri-auto-update-demo_${VERSION}_macos_aarch64.dmg"
+          gh release upload v$VERSION "artifacts/tauri-auto-update-demo_${VERSION}_macos_aarch64.app.tar.gz"
+          gh release upload v$VERSION "artifacts/tauri-auto-update-demo_${VERSION}_macos_aarch64.app.tar.gz.sig"
