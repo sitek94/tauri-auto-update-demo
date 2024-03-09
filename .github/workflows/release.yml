@@ -66,7 +66,6 @@ jobs:
             ./src-tauri/target/${{ matrix.target }}/release/bundle/macos/**.app.*
 
   release:
-    name: Release
     needs: [build]
     runs-on: ubuntu-latest
     steps:
@@ -104,23 +103,23 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GH_BOT_PAT }}
 
-      - name: Download artifacts
+      - name: Download application assets
         if: steps.changesets.outputs.published == 'true'
         uses: actions/download-artifact@v4
         with:
           name: artifacts-aarch64
           path: artifacts/aarch64
 
-      - name: Upload artifacts
+      - name: Upload application assets to the latest release
         if: steps.changesets.outputs.published == 'true'
         env:
           GH_TOKEN: ${{ secrets.GH_BOT_PAT }}
         run: |
           VERSION=$(jq -r '.version' package.json)
 
-          mv "artifacts/aarch64/dmg/tauri-auto-update-demo_$VERSION_aarch64.dmg" "artifacts/tauri-auto-update-demo_$VERSION_macos_aarch64.dmg"
-          mv "artifacts/aarch64/macos/tauri-auto-update-demo.app.tar.gz" "artifacts/tauri-auto-update-demo_$VERSION_macos_aarch64.app.tar.gz"
-          mv "artifacts/aarch64/macos/tauri-auto-update-demo.app.tar.gz.sig" "artifacts/tauri-auto-update-demo_$VERSION_macos_aarch64.app.tar.gz.sig"
+          mv "artifacts/aarch64/dmg/tauri-auto-update-demo_${VERSION}_aarch64.dmg" "artifacts/tauri-auto-update-demo_${VERSION}_macos_aarch64.dmg"
+          mv "artifacts/aarch64/macos/tauri-auto-update-demo.app.tar.gz" "artifacts/tauri-auto-update-demo_${VERSION}_macos_aarch64.app.tar.gz"
+          mv "artifacts/aarch64/macos/tauri-auto-update-demo.app.tar.gz.sig" "artifacts/tauri-auto-update-demo_${VERSION}_macos_aarch64.app.tar.gz.sig"
 
           gh release upload v$VERSION "artifacts/tauri-auto-update-demo_$VERSION_macos_aarch64.dmg"
           gh release upload v$VERSION "artifacts/tauri-auto-update-demo_$VERSION_macos_aarch64.app.tar.gz"
