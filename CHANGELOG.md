@@ -1,5 +1,11 @@
 # tauri-auto-update-demo
 
+## 0.1.6
+
+### Patch Changes
+
+- new release ([`bc6b38dbffd9fd4b3dd46f0329c995e5a6576d42`](https://github.com/sitek94/tauri-auto-update-demo/commit/bc6b38dbffd9fd4b3dd46f0329c995e5a6576d42))
+
 ## 0.1.5
 
 ### Patch Changes
