@@ -134,3 +134,5 @@ jobs:
         run:
           gh release upload v${{ steps.set_version.outputs.new_version}}
           ./README.md
+        env:
+          GH_TOKEN: ${{ secrets.GH_BOT_PAT }}
