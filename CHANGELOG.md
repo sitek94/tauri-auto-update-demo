@@ -1,5 +1,11 @@
 # tauri-auto-update-demo
 
+## 0.1.9
+
+### Patch Changes
+
+- test uploading release assets with fake app files ([`a9bbf72ea1090c3bc1d4d395f1b385d547e898d2`](https://github.com/sitek94/tauri-auto-update-demo/commit/a9bbf72ea1090c3bc1d4d395f1b385d547e898d2))
+
 ## 0.1.8
 
 ### Patch Changes
