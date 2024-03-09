@@ -1,5 +1,11 @@
 # tauri-auto-update-demo
 
+## 0.1.5
+
+### Patch Changes
+
+- add missing sig file ([`6177781f12537a9e6f62c2726a34405f3d0c633d`](https://github.com/sitek94/tauri-auto-update-demo/commit/6177781f12537a9e6f62c2726a34405f3d0c633d))
+
 ## 0.1.4
 
 ### Patch Changes
