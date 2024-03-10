@@ -1,11 +1,11 @@
 {
-  "version": "v0.1.16",
-  "notes": "### Patch Changes\n\n-   preparer updater.json ([`1b125a254026450f2195528c19602ff0c60b7214`](https://github.com/sitek94/tauri-auto-update-demo/commit/1b125a254026450f2195528c19602ff0c60b7214))\n",
-  "pub_date": "2024-03-10T17:36:12Z",
+  "version": "v0.1.17",
+  "notes": "### Patch Changes\n\n-   display app name and version ([`c7a566720ef34fc669b6dcb3d3a94b5870a0b50b`](https://github.com/sitek94/tauri-auto-update-demo/commit/c7a566720ef34fc669b6dcb3d3a94b5870a0b50b))\n",
+  "pub_date": "2024-03-10T18:08:22Z",
   "platforms": {
     "darwin-aarch64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRbk52TmlwUmF5bWoyNjl2amxXZmdBcWtVZXM3R3F5RlFBSVVpdUprY2dvMEttZzFvOGxHUTNmTUJwZG9TeGRLeUt1cGxneTZaOE5DMTkrZ3hnZHpqeVZvditQVDFudlF3PQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzEwMDkyMTU0CWZpbGU6dGF1cmktYXV0by11cGRhdGUtZGVtby5hcHAudGFyLmd6CkdoT05lQ0RNcnU5cmpOYVJ0bmZKcU04bkhoVTJ0cWloNXR5Yy9LR3VyVmJ4ZlVhcVcvSGlqSmdsMVgwNGVidmtnOTR3NHNXdVk2OXZZYkhwK3ZnQkNRPT0K",
-      "url": "https://github.com/sitek94/tauri-auto-update-demo/releases/download/v0.1.16/tauri-auto-update-demo_0.1.16_macos_aarch64.app.tar.gz"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRbk52TmlwUmF5bXRKOVRvY24rY21Ub1BFcStNbk1tQmpUTTJKVytxR3JxSjZXTmVRTzFVYWxuTjdncDJqSnUrVUVGQm5WUzFVdGtIcHJ2eU9wRCtqRE53MVAwcmYxUlFnPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzEwMDk0MDgxCWZpbGU6dGF1cmktYXV0by11cGRhdGUtZGVtby5hcHAudGFyLmd6CmNaQTNueWh0ODZkcGhuWmRmbVJiaVprY1A3SWE3T0thVGlvenJ2WTAzcEdXdk5Tbko0QjVoRWhQZy9uQjBRVUswLzJpVCtQZjNlMTg2ZThzbkR0Q0RBPT0K",
+      "url": "https://github.com/sitek94/tauri-auto-update-demo/releases/download/v0.1.17/tauri-auto-update-demo_0.1.17_macos_aarch64.app.tar.gz"
     }
   }
 }
