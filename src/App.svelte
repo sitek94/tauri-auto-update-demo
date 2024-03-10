@@ -1,9 +1,13 @@
 <script lang="ts">
   import Greet from './lib/Greet.svelte'
+
+  import packageJson from '../package.json'
 </script>
 
 <main class="container">
-  <h1>Welcome to Tauri!</h1>
+  <h1>
+    {packageJson.name} v{packageJson.version}
+  </h1>
 
   <div class="row">
     <a href="https://vitejs.dev" target="_blank">
@@ -17,15 +21,11 @@
     </a>
   </div>
 
-  <p>
-    Click on the Tauri, Vite, and Svelte logos to learn more.
-  </p>
+  <p>Click on the Tauri, Vite, and Svelte logos to learn more.</p>
 
   <div class="row">
     <Greet />
   </div>
-
-
 </main>
 
 <style>

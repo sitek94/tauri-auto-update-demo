@@ -3,10 +3,6 @@
   "private": true,
   "version": "0.1.16",
   "type": "module",
-  "files": [
-    "./README.md",
-    "./artifacts/**/*"
-  ],
   "scripts": {
     "_frontend:build": "bun ./scripts/build.js",
     "frontend:build": "vite build",
