@@ -1,5 +1,11 @@
 # tauri-auto-update-demo
 
+## 0.1.17
+
+### Patch Changes
+
+- display app name and version ([`c7a566720ef34fc669b6dcb3d3a94b5870a0b50b`](https://github.com/sitek94/tauri-auto-update-demo/commit/c7a566720ef34fc669b6dcb3d3a94b5870a0b50b))
+
 ## 0.1.16
 
 ### Patch Changes
