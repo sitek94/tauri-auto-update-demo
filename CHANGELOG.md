@@ -1,5 +1,11 @@
 # tauri-auto-update-demo
 
+## 0.1.16
+
+### Patch Changes
+
+- preparer updater.json ([`1b125a254026450f2195528c19602ff0c60b7214`](https://github.com/sitek94/tauri-auto-update-demo/commit/1b125a254026450f2195528c19602ff0c60b7214))
+
 ## 0.1.15
 
 ### Patch Changes
